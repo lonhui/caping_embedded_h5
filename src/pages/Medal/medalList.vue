@@ -1,5 +1,5 @@
 <template>
-    <div id="medalList">
+    <div id="medalList" v-wechat-title="$route.meta.title">
         <div class="back">
             <div class="awarded">
                 <p class="title">Medal Awarded</p>

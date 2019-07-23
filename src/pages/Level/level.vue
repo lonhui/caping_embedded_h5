@@ -1,5 +1,5 @@
 <template>
-    <div id="Level">
+    <div id="Level" v-wechat-title="$route.meta.title">
         <!-- 等级列表 -->
         <div class="lv_table">
             <table class="table">
