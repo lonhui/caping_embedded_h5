@@ -76,4 +76,8 @@ hr {
 body{
   background-color: #f6f6f6;
 }
+ /* 自定义颜色进度条 */
+#nprogress .bar {
+  background: #82c345 !important;
+}
 </style>
