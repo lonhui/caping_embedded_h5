@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
@@ -79,5 +81,9 @@ body{
  /* 自定义颜色进度条 */
 #nprogress .bar {
   background: #82c345 !important;
+}
+#nprogress .spinner-icon{
+  border-top-color: #82c345;
+  border-left-color: #82c345;
 }
 </style>
