@@ -8,7 +8,6 @@ axios请求封装
  */
 
 import axios from 'axios'
-import { message } from 'antd';
 
 // 创建axios实例
 const service = axios.create({
@@ -36,14 +35,14 @@ service.interceptors.response.use(
     if(res.code){
         if (res.code !== 0) {
           // 错误提示
-            message.error(res.msg);
+            // message.error(res.msg);
             console.log(res)
         }
     }
     return response.data
   },
   error => {
-    message.error(error.message)
+    // message.error(error.message)
     // 错误提示
     console.log(error)
   }

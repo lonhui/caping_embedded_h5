@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import {getUserMedalInfo} from '@/api/index'
 import faq from '@/components/FAQ'
 // import misi from '@/components/misi'
 import {FAQ} from '@/assets/js/FAQ'
