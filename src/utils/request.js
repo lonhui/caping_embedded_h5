@@ -11,7 +11,7 @@ import axios from 'axios'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'https://api.hamee.id',//域名或IP
+  baseURL: 'http://localhost:3440',//域名或IP
   timeout: 15000 // 请求超时时间
 })
 

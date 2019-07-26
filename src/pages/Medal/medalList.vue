@@ -41,6 +41,8 @@ import newIcon from "@/assets/Meadl/medals_label_new@2x.png"
 import {getUrlAllParams} from "@/utils/getUAndD"
 import {isTrue,isFalse} from "@/utils/isDataType"
 import {getCookie,setCookie} from "@/utils/Cookie"
+//
+import {getUserMedalInfo} from "@/api/index"
 
 
 export default {
@@ -102,7 +104,8 @@ export default {
         detail
     },
     created(){
-        this.getUrlParam()
+        let uid = this.getUrlParam()
+        getUserMedalInfo({uid:uid})
     },
     mounted(){
         this.initDepartment()
@@ -162,6 +165,7 @@ export default {
                     alert("没有uid")
                 }
             }
+            return uid;
         }
     }
 
