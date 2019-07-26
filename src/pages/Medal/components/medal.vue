@@ -1,7 +1,9 @@
 <template>
     <div id="medal" @click="open">
-        <div class="medal_succ" v-if="data.whetherToGet">
-            <img class="label" :src="data.labelIcon" alt="">
+        <div class="medal_succ" v-if="data.level >= 1">
+            <div class="labelBox">
+                <img v-if="data.labelIcon" class="label" :src="data.labelIcon" alt="">
+            </div>
             <img class="medalIcon" :src="data.icon" alt="">
             <img class="successIcon" src="@/assets/Meadl/icon_selected@2x.png" alt="">
             <p class="name">{{data.name}}</p>
@@ -9,9 +11,9 @@
         <div v-else class="medal_notObtained">
             <img class="medalIcon" :src="data.icon" alt="">
             <div class="progressbar">
-                <div class="progress"></div>
+                <div :class="'progress'+' progress'+data.id"></div>
             </div>
-            <p class="progressNum">{{data.progress}}</p>
+            <p class="progressNum">{{data.progress}}%</p>
             <p class="name">{{data.name}}</p>
         </div>
     </div>
@@ -19,14 +21,14 @@
 
 <script>
 export default {
-    props:["data","index"],
+    props:["data"],
     data(){
         return{
            progress:0 
         }
     },
     mounted(){
-        if(!this.data.whetherToGet){
+        if(this.data.level == 0){
             this.initProgress()
         }
     },
@@ -36,16 +38,15 @@ export default {
         },
         // 初始化进度条
         initProgress(){
-            let progress = Number(this.data.progress.substring(0,this.data.progress.length-1))
-            if(progress < 100){
-                document.getElementsByClassName("progress")[this.index].style.borderRadius="0.05rem 0 0 0.05rem"
+            if(this.data.progress <= 100){
+                document.getElementsByClassName("progress"+this.data.id)[0].style.borderRadius="0.05rem 0 0 0.05rem"
             }
             let count = 0
             let timer = setInterval(()=>{
-                if(count >= progress){
+                if(count >= this.data.progress){
                     clearInterval(timer)
                 }
-                document.getElementsByClassName("progress")[this.index].style.width = count+"%"
+                document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"
                 count++
             },20)
         }
@@ -72,6 +73,9 @@ export default {
     height: 0.14rem;
     border-top-right-radius: 0.10rem;
     border-bottom-left-radius: 0.10rem;
+}
+.labelBox{
+    height: 0.14rem;
     align-self:flex-end;
 }
 .medal_succ .medalIcon{

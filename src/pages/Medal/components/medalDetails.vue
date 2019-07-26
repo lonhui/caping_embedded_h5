@@ -5,7 +5,7 @@
             :loop="true" 
             :paginationSize="6" 
             :mouse-drag="false"
-            :navigateTo="navigateTo"
+            :navigateTo="detailData.id-1"
             paginationActiveColor="#fff"
             paginationColor="#666">
             <slide v-for="item in data" :key="item.id">
@@ -41,12 +41,7 @@ import medalsImg5 from "@/assets/Meadl/medals_img_theshoot@2x.png"
 import medalsImg6 from "@/assets/Meadl/medals_img_votingpioneer@2x.png"
 
 export default {
-    props:{
-        navigateTo:{
-            type: Number,
-            default: 1
-        }
-    },
+    props:["detailData"],
     data(){
         return{
             data:[
