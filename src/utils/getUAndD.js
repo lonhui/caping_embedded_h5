@@ -1,41 +1,19 @@
-import { setCookie,getCookie } from "./Cookie.js";
 
-const getUAndDByUrl = () => {
-    let user = {
-        uid : undefined,
-        did : undefined
+const getUrlAllParams = () => {
+    var url =  window.location.href;
+    var _pa = url.substring(url.indexOf('?') + 1),
+      _arrS = _pa.split('&'),
+      _rs = {};
+    for (var i = 0, _len = _arrS.length; i < _len; i++) {
+      var pos = _arrS[i].indexOf('=');
+      if (pos == -1) {
+        continue;
+      }
+      var name = _arrS[i].substring(0, pos),
+        value = window.decodeURIComponent(_arrS[i].substring(pos + 1));
+      _rs[name] = value;
     }
-    const url = window.location.href
-    let uid = url.match(/[^a-zA-Z0-9]u{1,1}=([0-9]+)/)
-    let did = url.match(/[^a-zA-Z0-9]c{1,1}=([a-z0-9A-Z]+)/)
-    if(uid && uid.length >= 2){
-      user.uid = uid[1]
-      setCookie("uid",uid[1],1)
-    }
-    
-    if(did && did.length >= 2){
-      user.deviceId = did[1]
-      setCookie("did",did[1],1)
-    }
+    return _rs;
+  }
 
-    return user
-}
-
-const getUAndDByCookie = () => {
-    let user = {
-        uid : undefined,
-        did : undefined
-    }
-    let uid = getCookie("uid")
-    let did = getCookie("did")
-    if(uid !== undefined || uid !== null && uid.length > 0){
-        user.uid = uid
-    }
-    if(did !== undefined || did !== null && did.length > 0){
-        user.did = did
-    }
-
-    return user
-}
-
-export { getUAndDByUrl, getUAndDByCookie }
+export { getUrlAllParams }

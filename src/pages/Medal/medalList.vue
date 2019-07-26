@@ -24,19 +24,24 @@
 </template>
 
 <script>
+// 组件
 import medal from "./components/medal"
 import detail from "./components/medalDetails"
-
+//勋章图
 import medalIcon1 from "@/assets/Meadl/medals_icon_commentary_normal@2x.png"
 import medalIcon2 from "@/assets/Meadl/medals_icon_critic_normal@2x.png"
 import medalIcon3 from "@/assets/Meadl/medals_icon_duancelebrity_normal@2x.png"
 import medalIcon4 from "@/assets/Meadl/medals_icon_labormodel_normal@2x.png"
 import medalIcon5 from "@/assets/Meadl/medals_icon_theshoot_normal@2x.png"
 import medalIcon6 from "@/assets/Meadl/medals_icon_votingpioneer_normal@2x.png"
-
-
+//标签图
 import hotIcon from "@/assets/Meadl/medals_label_hot@2x.png"
 import newIcon from "@/assets/Meadl/medals_label_new@2x.png"
+//工具函数
+import {getUrlAllParams} from "@/utils/getUAndD"
+import {isTrue,isFalse} from "@/utils/isDataType"
+import {getCookie,setCookie} from "@/utils/Cookie"
+
 
 export default {
     data(){
@@ -96,6 +101,9 @@ export default {
         medal,
         detail
     },
+    created(){
+        this.getUrlParam()
+    },
     mounted(){
         this.initDepartment()
     },
@@ -104,7 +112,7 @@ export default {
             this.navigateTo = Number(id)-1
             this.medalDetailShow = true
         },
-        // 初始化部局
+        // 初始化部局 有问题！！！
         initDepartment(){
             let clientHeight = document.documentElement.clientHeight
             let medal_awarded = document.getElementsByClassName("awarded")[0].getElementsByClassName("medal")
@@ -122,6 +130,36 @@ export default {
                     medal_unawarded[i].style.marginRight = "0px"
                 }else{
                     medal_unawarded[i].style.marginRight = "0.09rem"
+                }
+            }
+        },
+        getUrlParam(){
+            let mie = getCookie("c")
+            let did = getCookie("d")
+            let uid = getCookie("u")
+            let urlParams = getUrlAllParams()
+            if(isFalse(mie)){
+                if(isTrue(urlParams.c)){
+                    mie = urlParams.c
+                    setCookie("c",mie,1)
+                }else{
+                    alert("没有mie")
+                }
+            }
+            if(isFalse(did)){
+                if(isTrue(urlParams.d)){
+                    did = urlParams.d
+                    setCookie("d",did,1)
+                }else{
+                    alert("没有did")
+                }
+            }
+            if(isFalse(uid)){
+                if(isTrue(urlParams.u)){
+                    uid = urlParams.u
+                    setCookie("u",uid,1)
+                }else{
+                    alert("没有uid")
                 }
             }
         }
