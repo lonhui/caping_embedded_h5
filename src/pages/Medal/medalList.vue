@@ -2,23 +2,23 @@
     <div id="medalList" v-wechat-title="$route.meta.title">
         <div class="back">
             <div class="awarded">
-                <p class="title">Medal Awarded</p>
-                <div class="box">
-                    <div class="medal" v-for="item in medalData" :key="item.id">
-                        <medal v-if="item.level>=1" @on-open="openMedalDetai(item.id)" :data="item"/>
-                    </div>
-                </div>
+                <p v-show="awardedTitleStatus" class="title">Medal Awarded</p>
+                <ul class="box">
+                    <li class="medal" v-for="item in medalData" :key="item.id">
+                        <medal class="medalCom" v-if="item.level>=1" @on-open="openMedalDetai(item.id)" :data="item"/>
+                    </li>
+                </ul>
             </div>
             <div class="unawarded">
-                <p class="title">Unawarded Medal</p>
-                <div class="box">
-                    <div class="medal" v-for="item in medalData" :key="item.id">
-                        <medal v-if="item.level<1" @on-open="openMedalDetai(item)" :data="item"/>
-                    </div>
-                </div>
+                <p class="title" v-show="unawardedTitleStatus">Unawarded Medal</p>
+                <ul class="box">
+                    <li class="medal" v-for="item in medalData" :key="item.id">
+                        <medal class="medalCom" v-if="item.level<1" @on-open="openMedalDetai(item)" :data="item"/>
+                    </li>
+                </ul>
             </div>
         </div>
-        <detail @on-close="medalDetailShow = false" :detailData = detailData  v-if="medalDetailShow"/>
+        <detail @on-close="medalDetailShow = false" :medalData = medalData :detailData = detailData  v-if="medalDetailShow"/>
     </div>
 </template>
 
@@ -55,7 +55,8 @@ export default {
                 conditiondetail:"",
                 instructions: "",
             },
-            navigateTo:1,
+            awardedTitleStatus:true,
+            unawardedTitleStatus:true,
             medalData:[
                 {
                     condition: 10,
@@ -66,10 +67,10 @@ export default {
                     instructions: "",
                     label: "hot",
                     labelIcon:hotIcon,
-                    level: 1,
+                    level: 0,
                     name: "神评达人",
                     operationType: 3,
-                    progress: 100,
+                    progress: 0,
                     status: 1,
                 },{
                     condition: 100,
@@ -82,7 +83,7 @@ export default {
                     level: 0,
                     name: "投票先锋",
                     operationType: 4,
-                    progress: 36,
+                    progress: 0,
                     status: 1,
                 },{
                     condition: 100,
@@ -95,7 +96,7 @@ export default {
                     level: 0,
                     name: "投票先锋",
                     operationType: 6,
-                    progress: 20,
+                    progress: 0,
                     status: 1,
                 },{
                     condition: 100,
@@ -108,7 +109,7 @@ export default {
                     level: 0,
                     name: "投票先锋",
                     operationType: 5,
-                    progress: 1,
+                    progress: 0,
                     status: 1,
                 },{
                     condition: 100,
@@ -121,7 +122,7 @@ export default {
                     level: 0,
                     name: "投票先锋",
                     operationType: 1,
-                    progress: 90,
+                    progress: 0,
                     status: 1,
                 },{
                     condition: 100,
@@ -134,7 +135,7 @@ export default {
                     level: 0,
                     name: "投票先锋",
                     operationType: 2,
-                    progress: 50,
+                    progress: 0,
                     status: 1,
                 }
             ]
@@ -149,34 +150,13 @@ export default {
         this.getMeadelData(uid)
     },
     mounted(){
-        this.initDepartment()
+        this.titleStatus(this.medalData)
+        //this.initDepartment()
     },
     methods:{
         openMedalDetai(medal){
             this.detailData = medal
-            // this.navigateTo = Number(medal.id)-1
             this.medalDetailShow = true
-        },
-        // 初始化部局 有问题！！！
-        initDepartment(){
-            let clientHeight = document.documentElement.clientHeight
-            let medal_awarded = document.getElementsByClassName("awarded")[0].getElementsByClassName("medal")
-            let medal_unawarded = document.getElementsByClassName("unawarded")[0].getElementsByClassName("medal")
-            document.getElementById("medalList").style.height = clientHeight+"px";
-            for(let i = 0;i < medal_awarded.length;i++){
-                if((i)%3 === 0){
-                    medal_awarded[i].style.marginRight = "0px"
-                }else{
-                    medal_awarded[i].style.marginRight = "0.09rem"
-                }
-            }
-            for(let i = 0;i < medal_unawarded.length;i++){
-                if((i)%3 === 0){
-                    medal_unawarded[i].style.marginRight = "0px"
-                }else{
-                    medal_unawarded[i].style.marginRight = "0.09rem"
-                }
-            }
         },
         //获取勋章信息
         getMeadelData(uid){
@@ -202,8 +182,22 @@ export default {
                         data[i].progress = Math.floor(data[i].progress/data[i].condition*100)
                     }
                     this.medalData = data 
+                    this.titleStatus(data)
                 }
             })
+        },
+        titleStatus(medalData){
+            let awarded_count = 0
+            let unawarded_count = 0
+            medalData.map((item)=>{
+                if(item.level < 1){
+                    unawarded_count++
+                }else{
+                    awarded_count++
+                }
+            })
+            awarded_count > 0 ? this.awardedTitleStatus = true : this.awardedTitleStatus = false
+            unawarded_count > 0 ? this.unawardedTitleStatus = true : this.unawardedTitleStatus = false
         },
         //获取用户信息
         getUrlParam(){
@@ -253,10 +247,13 @@ export default {
 .box{
     display: flex;
     flex-wrap: wrap;
-    
 }
 .medal{
-    margin-top:0.10rem;
+    margin-top:0.06rem;
+}
+.medalCom{
+    margin-right: 0.03rem;
+    margin-left: 0.03rem;
 }
 .back{
     height: 100%;
@@ -266,5 +263,9 @@ export default {
 .back .title{
     font-size: 0.10rem;
     color: rgb(51, 51, 51, 0.5);;
+}
+
+ul .prize-item:nth-child(2){
+    margin-right: 2rem;
 }
 </style>

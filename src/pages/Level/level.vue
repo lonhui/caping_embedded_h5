@@ -32,14 +32,14 @@
             </table>
         </div>
         <!-- 级别权限 -->
-        <div class="lv_privileges">
+        <!--<div class="lv_privileges">
             <p>Level Privileges</p>
             <ul>
                 <li v-for="(item,index) in privileges" :key="index">
                     {{item}}
                 </li>
             </ul>
-        </div>
+        </div>-->
         <!-- 如何获得排名？ -->
         <div class="lv_promotion">
             <p>How to get rank？</p>
@@ -75,7 +75,7 @@ export default {
                     jabatan:"warga",
                     icon:lv1,
                     level:["LV.01","LV.02","LV.03"],
-                    integral:[2000,3000,5000]
+                    integral:[0,3000,5000]
                 },
                 {
                     id:2,
@@ -89,49 +89,49 @@ export default {
                     jabatan:"Lurach",
                     icon:lv3,
                     level:["LV.07","LV.08","LV.09"],
-                    integral:[8000,10000,12000]
+                    integral:[18000,24000,48000]
                 },
                 {
                     id:4,
                     jabatan:"Camat",
                     icon:lv4,
                     level:["LV.10","LV.11"],
-                    integral:[8000,10000]
+                    integral:[60000,90000]
                 },
                 {
                     id:5,
                     jabatan:"Wali Kota",
                     icon:lv5,
                     level:["LV.12","LV.13"],
-                    integral:[8000,10000]
+                    integral:[120000,240000]
                 },
                 {
                     id:6,
                     jabatan:"Gubernur",
                     icon:lv6,
                     level:["LV.14","LV.15"],
-                    integral:[8000,10000]
+                    integral:[420000,600000]
                 },
                 {
                     id:7,
                     jabatan:"Menteri",
                     icon:lv7,
                     level:["LV.16"],
-                    integral:[8000]
+                    integral:[720000]
                 },
                 {
                     id:8,
                     jabatan:"Wakil Presiden",
                     icon:lv8,
                     level:["LV.17"],
-                    integral:[8000]
+                    integral:[840000]
                 },
                 {
                     id:9,
                     jabatan:"Presiden",
                     icon:lv9,
                     level:["LV.18"],
-                    integral:[8000]
+                    integral:[1080000]
                 }
             ],
             privileges:[
@@ -141,48 +141,56 @@ export default {
             ],
             goRank:[
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Memberi Komentar",
+                    desc:"+ 5 Poin, 250 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Menyukai Artikel/Video",
+                    desc:"+ 2 Poin, 100 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Balasan Komentar",
+                    desc:"+ 5 Poin, 250 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Komentar Yang Disukai",
+                    desc:"+ 2 Poin, 100 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Membaca Artikel",
+                    desc:"+ 20 Poin, 800 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Menonton Video",
+                    desc:"+ 20 Poin, 400 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Absen Harian",
+                    desc:"+ 70 Poin, 10-70 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Mengambil Bonus",
+                    desc:"+ 20 Poin, 160 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Bagikan Konten",
+                    desc:"+ 5 Poin, 25 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day++ + 5 points, 50 times a day"
+                    title:"Bagikan Kode Undangan",
+                    desc:"+ 5 Poin, 100 Max poin/day"
                 },
                 {
-                    title:"Comment",
-                    desc:"+ 5 points, 50 times a day"
+                    title:"Membuka Push Notifikasi",
+                    desc:"+ 5 Poin, 200 Max poin/day"
+                },
+                {
+                    title:"Register Pengguna Baru",
+                    desc:"+ 2000 Poin, - Max poin/day"
+                },
+                {
+                    title:"Teman Yang Diundang",
+                    desc:"+ 600 Poin, - Max poin/day"
                 }
             ]
         }

@@ -8,16 +8,16 @@
             :navigateTo="detailData.id-1"
             paginationActiveColor="#fff"
             paginationColor="#666">
-            <slide v-for="item in data" :key="item.id">
+            <slide v-for="item in medalData" :key="item.id">
                 <div class="detail">
-                    <img class="medalImg" :src="item.image" alt="">
-                    <img class="isNotHave" v-show="item.isNotHave" src="@/assets/Meadl/icon_selected@2x.png" alt="">
+                    <img class="medalImg" :src="imgData[item.operationType-1]" alt="">
+                    <img class="isNotHave" v-show="item.level > 0" src="@/assets/Meadl/icon_selected@2x.png" alt="">
                     <div class="text">
-                        <p class="name">Labor model</p>
-                        <p class="content">234 people have been awarded</p>
+                        <p class="name">{{item.name}}</p>
+                        <p class="content">{{item.getCount}} people have been awarded</p>
                         <br><br>
                         <p class="title">How to get it?</p>
-                        <p class="content">Sign in for 2 consecutive months per day</p>
+                        <p class="content">{{item.conditiondetail}}</p>
                         <p class="title">Medal privileges</p>
                         <p class="content foot">1. Visual display privileges (commentary area, personal center wear)</p>
                     </div>
@@ -33,74 +33,37 @@
 <script>
 import { Carousel, Slide } from 'vue-carousel';
 
-import medalsImg1 from "@/assets/Meadl/medals_img_commentary@2x.png"
-import medalsImg2 from "@/assets/Meadl/medals_img_critic@2x.png"
-import medalsImg3 from "@/assets/Meadl/medals_img_duancelebrity@2x.png"
-import medalsImg4 from "@/assets/Meadl/medals_img_labormodel@2x.png"
-import medalsImg5 from "@/assets/Meadl/medals_img_theshoot@2x.png"
-import medalsImg6 from "@/assets/Meadl/medals_img_votingpioneer@2x.png"
+import medalsImg1 from "@/assets/Meadl/medals_img_critic@2x.png"//评论家
+import medalsImg2 from "@/assets/Meadl/medals_img_labormodel@2x.png"//劳动模范
+import medalsImg3 from "@/assets/Meadl/medals_img_commentary@2x.png"//神评达人
+import medalsImg4 from "@/assets/Meadl/medals_img_votingpioneer@2x.png"//投票先锋
+import medalsImg5 from "@/assets/Meadl/medals_img_theshoot@2x.png"//快枪手
+import medalsImg6 from "@/assets/Meadl/medals_img_duancelebrity@2x.png"//段子手
 
 export default {
-    props:["detailData"],
+    props:["detailData","medalData"],
     data(){
         return{
-            data:[
-                {
-                    id:1,
-                    image:medalsImg1,
-                    isNotHave:true,
-                    name:"Labor model",
-                    awardedCount:234,
-                    howGet:"Sign in for 2 consecutive months per day",
-                    medalPrivile:"1. Visual display privileges (commentary area, personal center wear)"
-                },
-                {
-                    id:2,
-                    image:medalsImg2,
-                    isNotHave:true,
-                    name:"Labor model",
-                    awardedCount:234,
-                    howGet:"Sign in for 2 consecutive months per day",
-                    medalPrivile:"1. Visual display privileges (commentary area, personal center wear)"
-                },
-                {
-                    id:3,
-                    image:medalsImg3,
-                    isNotHave:false,
-                    name:"Labor model",
-                    awardedCount:234,
-                    howGet:"Sign in for 2 consecutive months per day",
-                    medalPrivile:"1. Visual display privileges (commentary area, personal center wear)"
-                },
-                {
-                    id:4,
-                    image:medalsImg4,
-                    isNotHave:false,
-                    name:"Labor model",
-                    awardedCount:234,
-                    howGet:"Sign in for 2 consecutive months per day",
-                    medalPrivile:"1. Visual display privileges (commentary area, personal center wear)"
-                },
-                {
-                    id:5,
-                    image:medalsImg5,
-                    isNotHave:false,
-                    name:"Labor model",
-                    awardedCount:234,
-                    howGet:"Sign in for 2 consecutive months per day",
-                    medalPrivile:"1. Visual display privileges (commentary area, personal center wear)"
-                },
-                {
-                    id:6,
-                    image:medalsImg6,
-                    isNotHave:false,
-                    name:"Labor model",
-                    awardedCount:234,
-                    howGet:"Sign in for 2 consecutive months per day",
-                    medalPrivile:"1. Visual display privileges (commentary area, personal center wear)"
-                }
-            ]
+          imgData:[
+              medalsImg1,
+              medalsImg2,
+              medalsImg3,
+              medalsImg4,
+              medalsImg5,
+              medalsImg6
+          ]
         }
+    },
+    mounted(){
+        switch(medalData.operationType){
+            case 1:medalData.image = medalsImg1;break;
+            case 2:medalData.image = medalsImg2;break;
+            case 3:medalData.image = medalsImg3;break;
+            case 4:medalData.image = medalsImg4;break;
+            case 5:medalData.image = medalsImg5;break;
+            case 6:medalData.image = medalsImg6;break;
+        }
+        console.log(this.detailData)
     },
     components:{
         Carousel,
@@ -141,7 +104,7 @@ export default {
     height: 0.22rem;
 }
 .medalImg{
-    width: 3.4 0rem;
+    width: 3.40rem;
     height: 3.40rem;
     margin-top: 0.05rem;
     align-self: center;
