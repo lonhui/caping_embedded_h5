@@ -28,9 +28,7 @@ export default {
         }
     },
     mounted(){
-        if(this.data.level == 0){
-            this.initProgress()
-        }
+        this.initProgress()
     },
     methods:{
         open(){
@@ -38,17 +36,24 @@ export default {
         },
         // 初始化进度条
         initProgress(){
-            if(this.data.progress <= 100){
-                document.getElementsByClassName("progress"+this.data.id)[0].style.borderRadius="0.05rem 0 0 0.05rem"
-            }
-            let count = 0
-            let timer = setInterval(()=>{
-                if(count >= this.data.progress){
-                    clearInterval(timer)
+            if(this.data.level == 0){
+                if(this.data.progress <= 100){
+                    document.getElementsByClassName("progress"+this.data.id)[0].style.borderRadius="0.05rem 0 0 0.05rem"
                 }
-                document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"
-                count++
-            },20)
+                let count = 0
+                let timer = setInterval(()=>{
+                    if(count >= this.data.progress){
+                        clearInterval(timer)
+                    }
+                    document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"
+                    count++
+                },20)
+            }
+        }
+    },
+    watch:{
+        "data":function (){
+            this.initProgress()
         }
     }
 }

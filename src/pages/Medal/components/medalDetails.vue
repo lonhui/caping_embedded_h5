@@ -14,9 +14,9 @@
                     <img class="isNotHave" v-show="item.level > 0" src="@/assets/Meadl/icon_selected@2x.png" alt="">
                     <div class="text">
                         <p class="name">{{item.name}}</p>
-                        <p class="content">{{item.getCount}} people have been awarded</p>
+                        <p class="content">{{item.getCount == null ? 0 : item.getCount}} people have been awarded</p>
                         <br><br>
-                        <p class="title">How to get it?</p>
+                        <p class="title">Cara Mendapatkan?</p>
                         <p class="content">{{item.conditiondetail}}</p>
                         <p class="title">Medal privileges</p>
                         <p class="content foot">1. Visual display privileges (commentary area, personal center wear)</p>
@@ -53,17 +53,6 @@ export default {
               medalsImg6
           ]
         }
-    },
-    mounted(){
-        switch(medalData.operationType){
-            case 1:medalData.image = medalsImg1;break;
-            case 2:medalData.image = medalsImg2;break;
-            case 3:medalData.image = medalsImg3;break;
-            case 4:medalData.image = medalsImg4;break;
-            case 5:medalData.image = medalsImg5;break;
-            case 6:medalData.image = medalsImg6;break;
-        }
-        console.log(this.detailData)
     },
     components:{
         Carousel,
@@ -141,5 +130,8 @@ export default {
 }
 .foot{
     margin-bottom: 0;
+}
+.VueCarousel-pagination{
+    margin-top: 0;
 }
 </style>

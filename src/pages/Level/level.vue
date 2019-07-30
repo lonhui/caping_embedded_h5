@@ -7,7 +7,7 @@
                     <td>Jabatan</td>
                     <td>Simbol</td>
                     <td>Level</td>
-                    <td>Integral</td>
+                    <td>Jumlah Poin</td>
                 </tr>
                 <tr class="tr" v-for="item in letable" :key="item.id">
                     <td>{{item.jabatan}}</td>
@@ -42,7 +42,7 @@
         </div>-->
         <!-- 如何获得排名？ -->
         <div class="lv_promotion">
-            <p>How to get rank？</p>
+            <p>Misi Harian？</p>
             <ul>
                 <li v-for="(item,index) in goRank" :key="index">
                     <div class="liD">

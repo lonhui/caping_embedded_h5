@@ -1,16 +1,16 @@
 <template>
     <div id="medalList" v-wechat-title="$route.meta.title">
         <div class="back">
-            <div class="awarded">
-                <p v-show="awardedTitleStatus" class="title">Medal Awarded</p>
+            <div class="awarded" v-show="awardedTitleStatus" >
+                <p class="title">Medal Awarded</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
-                        <medal class="medalCom" v-if="item.level>=1" @on-open="openMedalDetai(item.id)" :data="item"/>
+                        <medal class="medalCom" v-if="item.level>=1" @on-open="openMedalDetai(item)" :data="item"/>
                     </li>
                 </ul>
             </div>
-            <div class="unawarded">
-                <p class="title" v-show="unawardedTitleStatus">Unawarded Medal</p>
+            <div class="unawarded" v-show="unawardedTitleStatus">
+                <p class="title">Unawarded Medal</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
                         <medal class="medalCom" v-if="item.level<1" @on-open="openMedalDetai(item)" :data="item"/>
@@ -60,7 +60,7 @@ export default {
             medalData:[
                 {
                     condition: 10,
-                    conditiondetail: "累计获得10次热门评论",
+                    conditiondetail: "Mendapatkan 10 kali Hot Comment",
                     getCount: 1,
                     icon: medalIcon3,
                     id: 1,
@@ -68,72 +68,72 @@ export default {
                     label: "hot",
                     labelIcon:hotIcon,
                     level: 0,
-                    name: "神评达人",
+                    name: "Mantul",//神评达人
                     operationType: 3,
                     progress: 0,
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "累计投票100次",
+                    conditiondetail: "Mengikuti poling 1000 kali di fitur NGOBROL",
                     getCount: null,
                     icon: medalIcon4,
                     id: 2,
                     instructions: "",
                     label: null,
                     level: 0,
-                    name: "投票先锋",
+                    name: "Gaspol",//投票先锋
                     operationType: 4,
                     progress: 0,
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "累计投票100次",
+                    conditiondetail: "Mendapatkan 1000 like pada 1 komentar",
                     getCount: null,
                     icon: medalIcon6,
                     id: 3,
                     instructions: "",
                     label: null,
                     level: 0,
-                    name: "投票先锋",
+                    name: "Eksis",//段子手
                     operationType: 6,
                     progress: 0,
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "累计投票100次",
+                    conditiondetail: "Membuka 1000 kali push notifikasi",
                     getCount: null,
                     icon: medalIcon5,
                     id: 4,
                     instructions: "",
                     label: null,
                     level: 0,
-                    name: "投票先锋",
+                    name: "Gercep",//快枪手
                     operationType: 5,
                     progress: 0,
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "累计投票100次",
+                    conditiondetail: "Berikan 1000 komentar terbaikmu",
                     getCount: null,
                     icon: medalIcon1,
                     id: 5,
                     instructions: "",
                     label: null,
                     level: 0,
-                    name: "投票先锋",
+                    name: "Ceriwis",//评论家
                     operationType: 1,
                     progress: 0,
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "累计投票100次",
+                    conditiondetail: "Absen 1000 kali setiap hari",
                     getCount: null,
                     icon: medalIcon2,
                     id: 6,
                     instructions: "",
                     label: null,
                     level: 0,
-                    name: "投票先锋",
+                    name: "Panutan",//劳动模范
                     operationType: 2,
                     progress: 0,
                     status: 1,
@@ -147,7 +147,9 @@ export default {
     },
     created(){
         let uid = this.getUrlParam()
-        this.getMeadelData(uid)
+        if(isTrue(uid)){
+            this.getMeadelData(uid)
+        }
     },
     mounted(){
         this.titleStatus(this.medalData)
@@ -161,7 +163,6 @@ export default {
         //获取勋章信息
         getMeadelData(uid){
             getUserMedalInfo({uid:uid}).then((res)=>{
-                console.log(res)
                 if(res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
@@ -210,7 +211,7 @@ export default {
                     mie = urlParams.c
                     setCookie("c",mie,1)
                 }else{
-                    alert("没有mie")
+                    console.log("未登录（mie）")
                 }
             }
             if(isFalse(did)){
@@ -218,7 +219,7 @@ export default {
                     did = urlParams.d
                     setCookie("d",did,1)
                 }else{
-                    alert("没有did")
+                    console.log("未登录（did）")
                 }
             }
             if(isFalse(uid)){
@@ -226,7 +227,7 @@ export default {
                     uid = urlParams.u
                     setCookie("u",uid,1)
                 }else{
-                    alert("没有uid")
+                    console.log("未登录（uid）")
                 }
             }
             return uid;
