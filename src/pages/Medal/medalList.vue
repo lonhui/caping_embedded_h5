@@ -153,7 +153,6 @@ export default {
     },
     mounted(){
         this.titleStatus(this.medalData)
-        //this.initDepartment()
     },
     methods:{
         openMedalDetai(medal){
@@ -163,7 +162,7 @@ export default {
         //获取勋章信息
         getMeadelData(uid){
             getUserMedalInfo({uid:uid}).then((res)=>{
-                if(res.code === 0){
+                if(res.code && res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
                         switch(data[i].operationType){

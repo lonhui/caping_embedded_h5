@@ -52,9 +52,12 @@ module.exports = {
 
     /**
      * Source Maps
+     * 开启后打包会生成.map文件方便调试
+     * 关闭后打包会对js代码进行压缩加密
+     * 生产环境必须关闭
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

@@ -29,7 +29,7 @@ export default {
 <style scoped>
 @font-face{
     font-family: 'PT_Serif_Regular';
-    src : url('../../static/font/PT_Serif_Regular.ttf');
+    src : url('../../static/fonts/PT_Serif_Regular.ttf');
 }
 
  #faq{
