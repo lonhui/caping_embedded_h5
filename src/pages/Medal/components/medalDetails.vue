@@ -14,12 +14,14 @@
                     <img class="isNotHave" v-show="item.level > 0" src="@/assets/Meadl/icon_selected@2x.png" alt="">
                     <div class="text">
                         <p class="name">{{item.name}}</p>
-                        <p class="content">{{item.getCount == null ? 0 : item.getCount}} people have been awarded</p>
+                        <p class="content">Sudah ada {{item.getCount == null ? 0 : item.getCount}} Capinger yang berhasil mendapatkan Medali ini</p>
                         <br><br>
+                        <!-- 勋章获取方式 -->
                         <p class="title">Cara Mendapatkan?</p>
                         <p class="content">{{item.conditiondetail}}</p>
-                        <p class="title">Medal privileges</p>
-                        <p class="content foot">1. Visual display privileges (commentary area, personal center wear)</p>
+                        <!-- 勋章权限 -->
+                        <!-- <p class="title">Medal privileges</p>
+                        <p class="content foot">1. Visual display privileges (commentary area, personal center wear)</p> -->
                     </div>
                 </div>
             </slide>

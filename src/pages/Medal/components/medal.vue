@@ -62,11 +62,12 @@ export default {
 <style scoped>
 #medal{
     background-color: #fff;
+    border-radius: 0.06rem;
 }
 .medal_succ,.medal_notObtained{
     width: 1.06rem;
     height: 1.45rem;
-    border-radius: 0.10rem;
+    border-radius: 0.06rem;
     display: flex;
     flex-direction: column;
     -moz-box-shadow:0 0 0.05rem rgba(0, 0, 0,0.3); 
