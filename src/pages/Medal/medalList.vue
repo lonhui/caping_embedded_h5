@@ -33,10 +33,14 @@ import medalIcon3 from "@/assets/Meadl/medals_icon_commentary_normal@2x.png"//�
 import medalIcon4 from "@/assets/Meadl/medals_icon_votingpioneer_normal@2x.png"//投票先锋
 import medalIcon5 from "@/assets/Meadl/medals_icon_theshoot_normal@2x.png"//快枪手
 import medalIcon6 from "@/assets/Meadl/medals_icon_duancelebrity_normal@2x.png"//段子手
+//勋章图(灰色)
+import medalIcon_gray1 from "@/assets/Meadl/medals_icon_critic_gray@2x.png"//评论家
+import medalIcon_gray2 from "@/assets/Meadl/medals_icon_labormodel_gray@2x.png"//劳动模范
+import medalIcon_gray3 from "@/assets/Meadl/medals_icon_commentary_gray@2x.png"//神评达人
+import medalIcon_gray4 from "@/assets/Meadl/medals_icon_votingpioneer_gray@2x.png"//投票先锋
+import medalIcon_gray5 from "@/assets/Meadl/medals_icon_theshoot_gray@2x.png"//快枪手
+import medalIcon_gray6 from "@/assets/Meadl/medals_icon_duancelebrity_gray@2x.png"//段子手
 
-//标签图
-import hotIcon from "@/assets/Meadl/medals_label_hot@2x.png"
-import newIcon from "@/assets/Meadl/medals_label_new@2x.png"
 //工具函数
 import {getUrlAllParams} from "@/utils/getUAndD"
 import {isTrue,isFalse} from "@/utils/isDataType"
@@ -65,8 +69,7 @@ export default {
                     icon: medalIcon3,
                     id: 1,
                     instructions: "",
-                    label: "hot",
-                    labelIcon:hotIcon,
+                    label:"hot",
                     level: 0,
                     name: "Mantul",//神评达人
                     operationType: 3,
@@ -79,7 +82,7 @@ export default {
                     icon: medalIcon4,
                     id: 2,
                     instructions: "",
-                    label: null,
+                    label:"hot",
                     level: 0,
                     name: "Gaspol",//投票先锋
                     operationType: 4,
@@ -92,7 +95,7 @@ export default {
                     icon: medalIcon6,
                     id: 3,
                     instructions: "",
-                    label: null,
+                    label:"hot",
                     level: 0,
                     name: "Eksis",//段子手
                     operationType: 6,
@@ -105,7 +108,7 @@ export default {
                     icon: medalIcon5,
                     id: 4,
                     instructions: "",
-                    label: null,
+                    label:"hot",
                     level: 0,
                     name: "Gercep",//快枪手
                     operationType: 5,
@@ -118,7 +121,7 @@ export default {
                     icon: medalIcon1,
                     id: 5,
                     instructions: "",
-                    label: null,
+                    label:"hot",
                     level: 0,
                     name: "Ceriwis",//评论家
                     operationType: 1,
@@ -131,7 +134,7 @@ export default {
                     icon: medalIcon2,
                     id: 6,
                     instructions: "",
-                    label: null,
+                    label:"hot",
                     level: 0,
                     name: "Panutan",//劳动模范
                     operationType: 2,
@@ -162,7 +165,7 @@ export default {
         //获取勋章信息
         getMeadelData(uid){
             getUserMedalInfo({uid:uid}).then((res)=>{
-                if(res.code && res.code === 0){
+                if(res.code != null && res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
                         switch(data[i].operationType){
@@ -238,7 +241,10 @@ export default {
 
 <style scoped>
 #medalList{
-    padding: 0.12rem;
+    padding-top: 0.12rem;
+    padding-bottom: 0.12rem;
+    padding-left: 0.085rem;
+    padding-right: 0.085rem;
     background-color: #f6f6f6;
 }
 .awarded{
@@ -249,11 +255,11 @@ export default {
     flex-wrap: wrap;
 }
 .medal{
-    margin-top:0.06rem;
+    margin-bottom:0.1rem;
 }
 .medalCom{
-    margin-right: 0.03rem;
-    margin-left: 0.03rem;
+    margin-right: 0.05rem;
+    margin-left: 0.05rem;
 }
 .back{
     height: 100%;
@@ -261,11 +267,9 @@ export default {
     overflow-y: auto;
 }
 .back .title{
+    padding-left: 0.04rem;
+    margin-bottom: 0.1rem;
     font-size: 0.10rem;
     color: rgb(51, 51, 51, 0.5);;
-}
-
-ul .prize-item:nth-child(2){
-    margin-right: 2rem;
 }
 </style>

@@ -2,7 +2,10 @@
     <div id="medal" @click="open">
         <div class="medal_succ" v-if="data.level >= 1">
             <div class="labelBox">
-                <img v-if="data.labelIcon" class="label" :src="data.labelIcon" alt="">
+                <img class="label" 
+                v-if="data.label=='hot' || data.label == 'new'" 
+                :src="data.label == 'hot' ? hotIcon : (data.label == 'new') ? newIcon : null" 
+                alt="">
             </div>
             <img class="medalIcon" :src="data.icon" alt="">
             <img class="successIcon" src="@/assets/Meadl/icon_selected@2x.png" alt="">
@@ -24,7 +27,10 @@ export default {
     props:["data"],
     data(){
         return{
-           progress:0 
+            //标签图
+            hotIcon:require("@/assets/Meadl/medals_label_hot@2x.png"),
+            newIcon:require("@/assets/Meadl/medals_label_new@2x.png"),
+            progress:0 
         }
     },
     mounted(){
@@ -62,17 +68,17 @@ export default {
 <style scoped>
 #medal{
     background-color: #fff;
-    border-radius: 0.06rem;
+    border-radius: 0.1rem;
 }
 .medal_succ,.medal_notObtained{
-    width: 1.06rem;
+    width: 1.04rem;
     height: 1.45rem;
-    border-radius: 0.06rem;
+    border-radius: 0.1rem;
     display: flex;
     flex-direction: column;
-    -moz-box-shadow:0 0 0.05rem rgba(0, 0, 0,0.3); 
-    -webkit-box-shadow:0 0 0.05rem rgba(0, 0, 0,0.3); 
-    box-shadow:0 0 0.05rem rgba(0, 0, 0,0.3);
+    -moz-box-shadow:0 0 0.03rem rgba(0, 0, 0,0.3); 
+    -webkit-box-shadow:0 0 0.03rem rgba(0, 0, 0,0.3); 
+    box-shadow:0 0 0.03rem rgba(0, 0, 0,0.3);
 }
 .medal_succ .label{
     width: 0.25rem;

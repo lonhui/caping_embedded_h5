@@ -3,6 +3,7 @@
         <carousel :per-page="1" 
             :centerMode="true" 
             :loop="true" 
+            :paginationPadding="4"
             :paginationSize="6" 
             :mouse-drag="false"
             :navigateTo="detailData.id-1"
@@ -15,7 +16,6 @@
                     <div class="text">
                         <p class="name">{{item.name}}</p>
                         <p class="content">Sudah ada {{item.getCount == null ? 0 : item.getCount}} Capinger yang berhasil mendapatkan Medali ini</p>
-                        <br><br>
                         <!-- 勋章获取方式 -->
                         <p class="title">Cara Mendapatkan?</p>
                         <p class="content">{{item.conditiondetail}}</p>
@@ -115,16 +115,19 @@ export default {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     text-align: center;
+    margin-bottom: 0.4rem;
     position: relative;
-    top: -0.3rem
+    top: 0.1rem
 }
 .name {
     font-size: 0.16rem;  
     line-height: 0.25rem;
 }
 .title{
-    font-size: 0.12rem;  
+    font-size: 0.13rem; 
+    font-weight: 500; 
     line-height: 0.20rem;
+    margin-top: 0.40rem;
 }
 .content{
     margin-bottom: 0.18rem;
