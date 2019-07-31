@@ -5,7 +5,11 @@
                 <p class="title">Medal Awarded</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
-                        <medal class="medalCom" v-if="item.level>=1" @on-open="openMedalDetai(item)" :medalimg="item.level>0?normal[item.operationType-1]:gray[item.operationType-1]" :data="item"/>
+                        <medal class="medalCom" 
+                        v-if="item.level>=1" 
+                        @on-open="openMedalDetai(item)" 
+                        :medalimg="item.level>0?normal[item.operationType-1]:gray[item.operationType-1]" 
+                        :data="item"/>
                     </li>
                 </ul>
             </div>
@@ -13,7 +17,11 @@
                 <p class="title">Unawarded Medal</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
-                        <medal class="medalCom" v-if="item.level<1" @on-open="openMedalDetai(item)" :medalimg="item.level>0?normal[item.operationType-1]:gray[item.operationType-1]" :data="item"/>
+                        <medal class="medalCom" 
+                        v-if="item.level<1" 
+                        @on-open="openMedalDetai(item)" 
+                        :medalimg="item.level>0?normal[item.operationType-1]:gray[item.operationType-1]" 
+                        :data="item"/>
                     </li>
                 </ul>
             </div>

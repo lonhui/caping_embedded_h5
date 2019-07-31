@@ -76,9 +76,9 @@ export default {
     border-radius: 0.1rem;
     display: flex;
     flex-direction: column;
-    -moz-box-shadow:0 0 0.03rem rgba(0, 0, 0,0.3); 
-    -webkit-box-shadow:0 0 0.03rem rgba(0, 0, 0,0.3); 
-    box-shadow:0 0 0.03rem rgba(0, 0, 0,0.3);
+    -moz-box-shadow:0 0 0.07rem rgba(0, 0, 0,0.2); 
+    -webkit-box-shadow:0 0 0.07rem rgba(0, 0, 0,0.2); 
+    box-shadow:0 0 0.07rem rgba(0, 0, 0,0.2);
 }
 .medal_succ .label{
     width: 0.25rem;

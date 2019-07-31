@@ -42,12 +42,12 @@
         </div>-->
         <!-- 如何获得排名？ -->
         <div class="lv_promotion">
-            <p>Misi Harian？</p>
+            <p>Misi Harians ?</p>
             <ul>
                 <li v-for="(item,index) in goRank" :key="index">
                     <div class="liD">
                         <div class="title">{{item.title}}</div>
-                        <div>{{item.desc}}</div>
+                        <div class="desc">{{item.desc}}</div>
                     </div>
                 </li>
             </ul>
@@ -141,55 +141,55 @@ export default {
             ],
             goRank:[
                 {
-                    title:"Memberi Komentar",
+                    title:"1. Memberi Komentar",
                     desc:"+ 5 Poin, 250 Max poin/day"
                 },
                 {
-                    title:"Menyukai Artikel/Video",
+                    title:"2. Menyukai Artikel/Video",
                     desc:"+ 2 Poin, 100 Max poin/day"
                 },
                 {
-                    title:"Balasan Komentar",
+                    title:"3. Balasan Komentar",
                     desc:"+ 5 Poin, 250 Max poin/day"
                 },
                 {
-                    title:"Komentar Yang Disukai",
+                    title:"4. Komentar Yang Disukai",
                     desc:"+ 2 Poin, 100 Max poin/day"
                 },
                 {
-                    title:"Membaca Artikel",
+                    title:"5. Membaca Artikel",
                     desc:"+ 20 Poin, 800 Max poin/day"
                 },
                 {
-                    title:"Menonton Video",
+                    title:"6. Menonton Video",
                     desc:"+ 20 Poin, 400 Max poin/day"
                 },
                 {
-                    title:"Absen Harian",
+                    title:"7. Absen Harian",
                     desc:"+ 70 Poin, 10-70 Max poin/day"
                 },
                 {
-                    title:"Mengambil Bonus",
+                    title:"8. Mengambil Bonus",
                     desc:"+ 20 Poin, 160 Max poin/day"
                 },
                 {
-                    title:"Bagikan Konten",
+                    title:"9. Bagikan Konten",
                     desc:"+ 5 Poin, 25 Max poin/day"
                 },
                 {
-                    title:"Bagikan Kode Undangan",
+                    title:"10. Bagikan Kode Undangan",
                     desc:"+ 5 Poin, 100 Max poin/day"
                 },
                 {
-                    title:"Membuka Push Notifikasi",
+                    title:"11. Membuka Push Notifikasi",
                     desc:"+ 5 Poin, 200 Max poin/day"
                 },
                 {
-                    title:"Register Pengguna Baru",
+                    title:"12. Register Pengguna Baru",
                     desc:"+ 2000 Poin, - Max poin/day"
                 },
                 {
-                    title:"Teman Yang Diundang",
+                    title:"13. Teman Yang Diundang",
                     desc:"+ 600 Poin, - Max poin/day"
                 }
             ]
@@ -289,7 +289,7 @@ tr{
 .lv_promotion{
     border-radius: 0.1rem;
     background-color: #fff;
-    padding: 0.1rem;
+    padding: 0.12rem;
     margin-top: 0.1rem;
     -moz-box-shadow:0 0 0.05rem rgba(0, 0, 0,0.3); 
     -webkit-box-shadow:0 0 0.05rem rgba(0, 0, 0,0.3); 
@@ -302,12 +302,12 @@ tr{
     color: #333;
 }
 .lv_promotion ul{
-    list-style-type: decimal;
-    margin-left: 0.15rem;
-    line-height: 0.19rem;
+    /* list-style-type: decimal; */
+    /* margin-left: 0.15rem; */
     color: rgba(51, 51, 51, 0.7);
 }
 .lv_promotion li .liD{
+    line-height: 0.24rem;
     display: flex;
     flex-direction:row;
     justify-content: space-between;
@@ -316,7 +316,7 @@ tr{
 .lv_promotion li{
     padding-top: 0.05rem;
     padding-bottom: 0.05rem;
-    border-bottom: rgba(51, 51, 51, 0.3) 0.005rem solid;
+    border-bottom: rgba(153, 76, 76, 0.15) 0.005rem solid;
 }
 .lv_promotion li .title{
     color: #333;
@@ -327,5 +327,7 @@ tr{
 .lv_promotion li div:nth-child(2){
     width: 50%;
 }
-
+.liD .desc{
+    text-align: right;
+}
 </style>
