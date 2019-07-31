@@ -12,7 +12,7 @@
             <p class="name">{{data.name}}</p>
         </div>
         <div v-else class="medal_notObtained">
-            <img class="medalIcon" :src="data.icon" alt="">
+            <img class="medalIcon" :src="medalimg" alt="">
             <div class="progressbar">
                 <div :class="'progress'+' progress'+data.id"></div>
             </div>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-    props:["data"],
+    props:["data","medalimg"],
     data(){
         return{
             //标签图

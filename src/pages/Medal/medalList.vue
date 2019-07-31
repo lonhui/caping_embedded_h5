@@ -5,7 +5,7 @@
                 <p class="title">Medal Awarded</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
-                        <medal class="medalCom" v-if="item.level>=1" @on-open="openMedalDetai(item)" :data="item"/>
+                        <medal class="medalCom" v-if="item.level>=1" @on-open="openMedalDetai(item)" :medalimg="item.level>0?normal[item.operationType-1]:gray[item.operationType-1]" :data="item"/>
                     </li>
                 </ul>
             </div>
@@ -13,7 +13,7 @@
                 <p class="title">Unawarded Medal</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
-                        <medal class="medalCom" v-if="item.level<1" @on-open="openMedalDetai(item)" :data="item"/>
+                        <medal class="medalCom" v-if="item.level<1" @on-open="openMedalDetai(item)" :medalimg="item.level>0?normal[item.operationType-1]:gray[item.operationType-1]" :data="item"/>
                     </li>
                 </ul>
             </div>
@@ -26,20 +26,6 @@
 // 组件
 import medal from "./components/medal"
 import detail from "./components/medalDetails"
-//勋章图
-import medalIcon1 from "@/assets/Meadl/medals_icon_critic_normal@2x.png"//评论家
-import medalIcon2 from "@/assets/Meadl/medals_icon_labormodel_normal@2x.png"//劳动模范
-import medalIcon3 from "@/assets/Meadl/medals_icon_commentary_normal@2x.png"//神评达人
-import medalIcon4 from "@/assets/Meadl/medals_icon_votingpioneer_normal@2x.png"//投票先锋
-import medalIcon5 from "@/assets/Meadl/medals_icon_theshoot_normal@2x.png"//快枪手
-import medalIcon6 from "@/assets/Meadl/medals_icon_duancelebrity_normal@2x.png"//段子手
-//勋章图(灰色)
-import medalIcon_gray1 from "@/assets/Meadl/medals_icon_critic_gray@2x.png"//评论家
-import medalIcon_gray2 from "@/assets/Meadl/medals_icon_labormodel_gray@2x.png"//劳动模范
-import medalIcon_gray3 from "@/assets/Meadl/medals_icon_commentary_gray@2x.png"//神评达人
-import medalIcon_gray4 from "@/assets/Meadl/medals_icon_votingpioneer_gray@2x.png"//投票先锋
-import medalIcon_gray5 from "@/assets/Meadl/medals_icon_theshoot_gray@2x.png"//快枪手
-import medalIcon_gray6 from "@/assets/Meadl/medals_icon_duancelebrity_gray@2x.png"//段子手
 
 //工具函数
 import {getUrlAllParams} from "@/utils/getUAndD"
@@ -52,6 +38,24 @@ import {getUserMedalInfo} from "@/api/index"
 export default {
     data(){
         return{
+            //已获得，彩色图
+            normal:[
+                require("@/assets/Meadl/medals_icon_critic_normal@2x.png"),//评论家
+                require("@/assets/Meadl/medals_icon_labormodel_normal@2x.png"),//劳动模范
+                require("@/assets/Meadl/medals_icon_commentary_normal@2x.png"),//神评达人
+                require("@/assets/Meadl/medals_icon_votingpioneer_normal@2x.png"),//投票先锋
+                require("@/assets/Meadl/medals_icon_theshoot_normal@2x.png"),//快枪手
+                require("@/assets/Meadl/medals_icon_duancelebrity_normal@2x.png")//段子手
+            ],
+            //未获得，灰色图
+            gray:[
+                require("@/assets/Meadl/medals_icon_critic_gray@2x.png"),
+                require("@/assets/Meadl/medals_icon_labormodel_gray@2x.png"),
+                require("@/assets/Meadl/medals_icon_commentary_gray@2x.png"),
+                require("@/assets/Meadl/medals_icon_votingpioneer_gray@2x.png"),
+                require("@/assets/Meadl/medals_icon_theshoot_gray@2x.png"),
+                require("@/assets/Meadl/medals_icon_duancelebrity_gray@2x.png")
+            ],
             medalDetailShow:false,
             detailData:{
                 navigateTo:1,
@@ -66,7 +70,6 @@ export default {
                     condition: 10,
                     conditiondetail: "Mendapatkan 10 kali Hot Comment",
                     getCount: 1,
-                    icon: medalIcon3,
                     id: 1,
                     instructions: "",
                     label:"hot",
@@ -79,7 +82,6 @@ export default {
                     condition: 100,
                     conditiondetail: "Mengikuti poling 1000 kali di fitur NGOBROL",
                     getCount: null,
-                    icon: medalIcon4,
                     id: 2,
                     instructions: "",
                     label:"hot",
@@ -92,7 +94,6 @@ export default {
                     condition: 100,
                     conditiondetail: "Mendapatkan 1000 like pada 1 komentar",
                     getCount: null,
-                    icon: medalIcon6,
                     id: 3,
                     instructions: "",
                     label:"hot",
@@ -105,7 +106,6 @@ export default {
                     condition: 100,
                     conditiondetail: "Membuka 1000 kali push notifikasi",
                     getCount: null,
-                    icon: medalIcon5,
                     id: 4,
                     instructions: "",
                     label:"hot",
@@ -118,7 +118,7 @@ export default {
                     condition: 100,
                     conditiondetail: "Berikan 1000 komentar terbaikmu",
                     getCount: null,
-                    icon: medalIcon1,
+                    // icon: medalIcon1,
                     id: 5,
                     instructions: "",
                     label:"hot",
@@ -131,7 +131,6 @@ export default {
                     condition: 100,
                     conditiondetail: "Absen 1000 kali setiap hari",
                     getCount: null,
-                    icon: medalIcon2,
                     id: 6,
                     instructions: "",
                     label:"hot",
@@ -168,20 +167,6 @@ export default {
                 if(res.code != null && res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
-                        switch(data[i].operationType){
-                            case 1:data[i].icon = medalIcon1;break;
-                            case 2:data[i].icon = medalIcon2;break;
-                            case 3:data[i].icon = medalIcon3;break;
-                            case 4:data[i].icon = medalIcon4;break;
-                            case 5:data[i].icon = medalIcon5;break;
-                            case 6:data[i].icon = medalIcon6;break;
-                        }
-                        if(data[i].label === "hot"){
-                            data[i].labelIcon = hotIcon
-                        }
-                        if(data[i].label === "new"){
-                            data[i].labelIcon = newIcon
-                        }
                         data[i].progress = Math.floor(data[i].progress/data[i].condition*100)
                     }
                     this.medalData = data 
