@@ -74,80 +74,7 @@ export default {
             awardedTitleStatus:true,
             unawardedTitleStatus:true,
             medalData:[
-                {
-                    condition: 10,
-                    conditiondetail: "Mendapatkan 10 kali Hot Comment",
-                    getCount: 1,
-                    id: 1,
-                    instructions: "",
-                    label:"hot",
-                    level: 0,
-                    name: "Mantul",//神评达人
-                    operationType: 3,
-                    progress: 0,
-                    status: 1,
-                },{
-                    condition: 100,
-                    conditiondetail: "Mengikuti poling 1000 kali di fitur NGOBROL",
-                    getCount: null,
-                    id: 2,
-                    instructions: "",
-                    label:"hot",
-                    level: 0,
-                    name: "Gaspol",//投票先锋
-                    operationType: 4,
-                    progress: 0,
-                    status: 1,
-                },{
-                    condition: 100,
-                    conditiondetail: "Mendapatkan 1000 like pada 1 komentar",
-                    getCount: null,
-                    id: 3,
-                    instructions: "",
-                    label:"hot",
-                    level: 0,
-                    name: "Eksis",//段子手
-                    operationType: 6,
-                    progress: 0,
-                    status: 1,
-                },{
-                    condition: 100,
-                    conditiondetail: "Membuka 1000 kali push notifikasi",
-                    getCount: null,
-                    id: 4,
-                    instructions: "",
-                    label:"hot",
-                    level: 0,
-                    name: "Gercep",//快枪手
-                    operationType: 5,
-                    progress: 0,
-                    status: 1,
-                },{
-                    condition: 100,
-                    conditiondetail: "Berikan 1000 komentar terbaikmu",
-                    getCount: null,
-                    // icon: medalIcon1,
-                    id: 5,
-                    instructions: "",
-                    label:"hot",
-                    level: 0,
-                    name: "Ceriwis",//评论家
-                    operationType: 1,
-                    progress: 0,
-                    status: 1,
-                },{
-                    condition: 100,
-                    conditiondetail: "Absen 1000 kali setiap hari",
-                    getCount: null,
-                    id: 6,
-                    instructions: "",
-                    label:"hot",
-                    level: 0,
-                    name: "Panutan",//劳动模范
-                    operationType: 2,
-                    progress: 0,
-                    status: 1,
-                }
+                
             ]
         }
     },
@@ -159,6 +86,8 @@ export default {
         let uid = this.getUrlParam()
         if(isTrue(uid)){
             this.getMeadelData(uid)
+        }else{
+            this.medalInfo()
         }
     },
     mounted(){
@@ -175,11 +104,14 @@ export default {
                 if(res.code != null && res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
-                        data[i].progress = Math.floor(data[i].progress/data[i].condition*100)
+                        data[i].progress = Math.floor(data[i].progress/data[i].condition*100)<=100?Math.floor(data[i].progress/data[i].condition*100):100
                     }
                     this.medalData = data 
                     this.titleStatus(data)
                 }
+            }).catch((error)=>{
+                console.log(error)
+                this.medalInfo()
             })
         },
         titleStatus(medalData){
@@ -226,6 +158,82 @@ export default {
                 }
             }
             return uid;
+        },
+        //勋章默认信息
+        medalInfo(){
+            this.medalData = [{
+                    condition: 10,
+                    conditiondetail: "Mendapatkan 10 kali Hot Comment",
+                    getCount: 1,
+                    id: 1,
+                    instructions: "",
+                    label:"",
+                    level: 0,
+                    name: "Mantul",//神评达人
+                    operationType: 3,
+                    progress: 0,
+                    status: 1,
+                },{
+                    condition: 100,
+                    conditiondetail: "Mengikuti poling 1000 kali di fitur NGOBROL",
+                    getCount: null,
+                    id: 2,
+                    instructions: "",
+                    label:"",
+                    level: 0,
+                    name: "Gaspol",//投票先锋
+                    operationType: 4,
+                    progress: 0,
+                    status: 1,
+                },{
+                    condition: 100,
+                    conditiondetail: "Mendapatkan 1000 like pada 1 komentar",
+                    getCount: null,
+                    id: 3,
+                    instructions: "",
+                    label:"hot",
+                    level: 0,
+                    name: "Eksis",//段子手
+                    operationType: 6,
+                    progress: 0,
+                    status: 1,
+                },{
+                    condition: 100,
+                    conditiondetail: "Membuka 1000 kali push notifikasi",
+                    getCount: null,
+                    id: 4,
+                    instructions: "",
+                    label:"hot",
+                    level: 0,
+                    name: "Gercep",//快枪手
+                    operationType: 5,
+                    progress: 0,
+                    status: 1,
+                },{
+                    condition: 100,
+                    conditiondetail: "Berikan 1000 komentar terbaikmu",
+                    getCount: null,
+                    id: 5,
+                    instructions: "",
+                    label:"hot",
+                    level: 0,
+                    name: "Ceriwis",//评论家
+                    operationType: 1,
+                    progress: 0,
+                    status: 1,
+                },{
+                    condition: 100,
+                    conditiondetail: "Absen 1000 kali setiap hari",
+                    getCount: null,
+                    id: 6,
+                    instructions: "",
+                    label:"hot",
+                    level: 0,
+                    name: "Panutan",//劳动模范
+                    operationType: 2,
+                    progress: 0,
+                    status: 1,
+                }]
         }
     }
 

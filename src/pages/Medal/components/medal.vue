@@ -1,5 +1,6 @@
 <template>
     <div id="medal" @click="open">
+        <!-- 已获得 -->
         <div class="medal_succ" v-if="data.level >= 1">
             <div class="labelBox">
                 <img class="label" 
@@ -7,14 +8,15 @@
                 :src="data.label == 'hot' ? hotIcon : (data.label == 'new') ? newIcon : null" 
                 alt="">
             </div>
-            <img class="medalIcon" :src="data.icon" alt="">
+            <img class="medalIcon" :src="medalimg" alt="">
             <img class="successIcon" src="@/assets/Meadl/icon_selected@2x.png" alt="">
             <p class="name">{{data.name}}</p>
         </div>
+        <!-- 位获得 -->
         <div v-else class="medal_notObtained">
             <img class="medalIcon" :src="medalimg" alt="">
             <div class="progressbar">
-                <div :class="'progress'+' progress'+data.id"></div>
+                <div :class="data.progress < 100?'progress progress'+data.id:'progressR progress'+data.id"></div>
             </div>
             <p class="progressNum">{{data.progress}}%</p>
             <p class="name">{{data.name}}</p>
@@ -43,12 +45,9 @@ export default {
         // 初始化进度条
         initProgress(){
             if(this.data.level == 0){
-                if(this.data.progress <= 100){
-                    document.getElementsByClassName("progress"+this.data.id)[0].style.borderRadius="0.05rem 0 0 0.05rem"
-                }
                 let count = 0
                 let timer = setInterval(()=>{
-                    if(count >= this.data.progress){
+                    if(count >= this.data.progress || count == 100){
                         clearInterval(timer)
                     }
                     document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"
@@ -126,7 +125,13 @@ export default {
     width: 0%;
     height: 100%;
     background-color: #666;
-    border-radius: 0.06rem;
+    border-radius: 0.05rem 0 0 0.05rem;
+}
+.medal_notObtained .progressR{
+    width: 0%;
+    height: 100%;
+    background-color: #666;
+    border-radius: 0.05rem;
 }
 
 .medal_notObtained p{
@@ -142,4 +147,5 @@ export default {
     font-size: 0.10rem;
     color: rgb(51, 51, 51);
 }
+
 </style>
