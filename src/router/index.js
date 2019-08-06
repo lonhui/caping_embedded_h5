@@ -18,6 +18,15 @@ const router = new Router({
         component: () => import('@/pages/Home/index')
     },
     {
+      path: '/faq',
+        name: 'home',
+        meta:{
+            title:'FAQ',
+            scrollToTop: true
+        },
+        component: () => import('@/pages/Home/faqNew')
+    },
+    {
         path: '/privacy',
         name: 'privacy',
         meta:{

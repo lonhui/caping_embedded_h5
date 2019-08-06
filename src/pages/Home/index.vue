@@ -1,6 +1,6 @@
 <template>
     <div id="home" v-wechat-title="$route.meta.title">
-        <!-- <header>
+        <header>
             <div class="faq" @click="bottomLineShow = true">
                 <span :style="{color:bottomLineShow?'#82c345':'rgba(0, 0, 0, 0.5)'}">Seputar Caping</span>
                 <div class="bottomLine" v-show="bottomLineShow"></div>
@@ -9,14 +9,14 @@
                 <span :style="{color:!bottomLineShow?'#82c345':'rgba(0, 0, 0, 0.5)'}">Misi</span>
                 <div class="bottomLine" v-show="!bottomLineShow"></div>
             </div>
-        </header> -->
+        </header>
         <main id='main'>
             <div v-if="bottomLineShow">
                 <v-faq v-for="item in FAQ" :key="item.id" :data="item" />
             </div>
-            <!-- <div v-if="!bottomLineShow">
+            <div v-if="!bottomLineShow">
                 <v-misi v-for="item in Misi" :key="item.id" :data='item'/>
-            </div> -->
+            </div>
         </main>
     </div> 
 </template>
@@ -24,21 +24,21 @@
 <script>
 import {getUserMedalInfo} from '@/api/index'
 import faq from '@/components/FAQ'
-// import misi from '@/components/misi'
+import misi from '@/components/misi'
 import {FAQ} from '@/assets/js/FAQ'
-// import {Misi} from '@/assets/js/Misi'
+import {Misi} from '@/assets/js/Misi'
 
 export default {
     data(){
         return{
             bottomLineShow:true,
             FAQ:FAQ,
-            // Misi:Misi
+            Misi:Misi
         }
     },
     components:{
         'v-faq':faq,
-        // 'v-misi':misi
+        'v-misi':misi
     }
 }
 </script>

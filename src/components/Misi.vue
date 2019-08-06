@@ -27,11 +27,6 @@ export default {
 </script>
 
 <style scoped>
-@font-face{
-    font-family: 'PT_Serif_Regular';
-    src : url('../../static/font/PT_Serif_Regular.ttf');
-}
-
  #Mise{
      padding: 0.10rem;
      padding-bottom: 0
