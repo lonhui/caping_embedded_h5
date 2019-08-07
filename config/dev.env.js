@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  BASE_API: '"http://test.ai.caping.co.id"',
+  BASE_API: '"https://ai.caping.co.id"',
 })

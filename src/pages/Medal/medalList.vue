@@ -95,7 +95,11 @@ export default {
     },
     methods:{
         openMedalDetai(medal){
-            this.detailData = medal
+            this.medalData.map((item,index)=>{
+                if(item.operationType == medal.operationType){
+                    this.detailData = index
+                }
+            })
             this.medalDetailShow = true
         },
         //获取勋章信息

@@ -6,7 +6,7 @@
             :paginationPadding="4"
             :paginationSize="6" 
             :mouse-drag="false"
-            :navigateTo="detailData.id-1"
+            :navigateTo="detailData"
             paginationActiveColor="#fff"
             paginationColor="#666">
             <slide v-for="item in medalData" :key="item.id">
@@ -43,7 +43,7 @@ import medalsImg5 from "@/assets/Meadl/medals_img_theshoot@2x.png"//快枪手
 import medalsImg6 from "@/assets/Meadl/medals_img_duancelebrity@2x.png"//段子手
 
 export default {
-    props:["detailData","medalData"],
+    props:["medalData","detailData"],
     data(){
         return{
           imgData:[
@@ -59,6 +59,10 @@ export default {
     components:{
         Carousel,
         Slide
+    },
+    mounted(){
+        console.log(this.medalData)
+        console.log(this.detailData)
     },
     methods:{
         close(){
