@@ -179,7 +179,7 @@ export default {
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "Mengikuti poling 1000 kali di fitur NGOBROL",
+                    conditiondetail: "Mengikuti poling 100 kali di fitur NGOBROL",
                     getCount: null,
                     id: 2,
                     instructions: "",
@@ -227,7 +227,7 @@ export default {
                     status: 1,
                 },{
                     condition: 100,
-                    conditiondetail: "Absen 1000 kali setiap hari",
+                    conditiondetail: "Lakukan absensi harian setiap hari selama 2 bulan.",
                     getCount: null,
                     id: 6,
                     instructions: "",
