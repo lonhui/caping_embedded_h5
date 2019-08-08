@@ -1,6 +1,6 @@
 <template>
     <div id="medalList" v-wechat-title="$route.meta.title">
-        <div class="back">
+        <div class="back" v-if="dataStatus === true">
             <div class="awarded" v-show="awardedTitleStatus" >
                 <p class="title">Medal Awarded</p>
                 <ul class="box">
@@ -26,6 +26,12 @@
                 </ul>
             </div>
         </div>
+        <!-- 没有信息 -->
+        <div class="noData" v-else>
+            <img src="../../assets/network_net_connected.jpg" alt="">
+            <p>Oops!Coba cek koneksi internetnya ya!</p>
+            <div class="button" @click="vfUid">Coba lagi</div>
+        </div>
         <detail @on-close="medalDetailShow = false" :medalData = medalData :detailData = detailData  v-if="medalDetailShow"/>
     </div>
 </template>
@@ -42,6 +48,8 @@ import {getCookie,setCookie} from "@/utils/Cookie"
 //
 import {getUserMedalInfo} from "@/api/index"
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 export default {
     data(){
@@ -64,6 +72,7 @@ export default {
                 require("@/assets/Meadl/medals_icon_theshoot_gray@2x.png"),
                 require("@/assets/Meadl/medals_icon_duancelebrity_gray@2x.png")
             ],
+            dataStatus:true,
             medalDetailShow:false,
             detailData:{
                 navigateTo:1,
@@ -83,12 +92,7 @@ export default {
         detail
     },
     created(){
-        let uid = this.getUrlParam()
-        if(isTrue(uid)){
-            this.getMeadelData(uid)
-        }else{
-            this.medalInfo()
-        }
+        this.vfUid()
     },
     mounted(){
         this.titleStatus(this.medalData)
@@ -102,21 +106,34 @@ export default {
             })
             this.medalDetailShow = true
         },
+        vfUid(){
+            let uid = this.getUrlParam()
+            if(isTrue(uid)){
+                this.getMeadelData(uid)
+            }else{
+                this.medalInfo()
+            }
+        },
         //获取勋章信息
         getMeadelData(uid){
+            NProgress.start()
             getUserMedalInfo({uid:uid}).then((res)=>{
                 if(res.code != null && res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
-                        data[i].progress = Math.floor(data[i].progress/data[i].condition*100)<=100?Math.floor(data[i].progress/data[i].condition*100):100
+                        data[i].progress = Math.floor(data[i].progress/data[i].condition*10000)/100 <= 100 ? Math.floor(data[i].progress/data[i].condition*10000)/100:100
                     }
                     this.medalData = data 
+                    this.dataStatus = true
                     this.titleStatus(data)
+                }else{
+                    this.dataStatus = false
                 }
             }).catch((error)=>{
                 console.log(error)
-                this.medalInfo()
+                this.dataStatus = false
             })
+            NProgress.done()
         },
         titleStatus(medalData){
             let awarded_count = 0
@@ -250,7 +267,8 @@ export default {
     padding-bottom: 0.12rem;
     padding-left: 0.085rem;
     padding-right: 0.085rem;
-    background-color: #f6f6f6;
+    background-color: #fff;
+    height: 30rem;
 }
 .awarded{
     margin-bottom: 0.22rem;
@@ -276,5 +294,27 @@ export default {
     margin-bottom: 0.1rem;
     font-size: 0.10rem;
     color: rgb(51, 51, 51, 0.5);;
+}
+.noData{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.noData img{
+    width: 40%;
+}
+.noData p{
+    font-size: 0.14rem;
+    color: rgba(0, 0, 0, 0.4);
+    margin-top: 0.1rem;
+}
+.noData .button{
+    margin-top: 0.2rem;
+    border:0.01rem #82c345 solid;
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.2rem;
+    color: #82c345;
+    font-size: 0.12rem;
 }
 </style>

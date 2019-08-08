@@ -60,10 +60,6 @@ export default {
         Carousel,
         Slide
     },
-    mounted(){
-        console.log(this.medalData)
-        console.log(this.detailData)
-    },
     methods:{
         close(){
             this.$emit("on-close")
