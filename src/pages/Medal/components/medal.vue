@@ -16,7 +16,7 @@
         <div v-else class="medal_notObtained">
             <img class="medalIcon" :src="medalimg" alt="">
             <div class="progressbar">
-                <div :class="data.progress < 100?'progress progress'+data.id:'progressR progress'+data.id"></div>
+                <div :class="'progress progress'+data.id"></div>
             </div>
             <p class="progressNum">{{data.progress}}%</p>
             <p class="name">{{data.name}}</p>
@@ -120,18 +120,12 @@ export default {
     margin-top: 0.05rem;
     background-color: #e6e6e6;
     border-radius: 0.06rem;
+    overflow:hidden;
 }
 .medal_notObtained .progress{
     width: 0%;
     height: 100%;
     background-color: #666;
-    border-radius: 0.05rem 0 0 0.05rem;
-}
-.medal_notObtained .progressR{
-    width: 0%;
-    height: 100%;
-    background-color: #666;
-    border-radius: 0.05rem;
 }
 
 .medal_notObtained p{
