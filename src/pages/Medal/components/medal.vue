@@ -18,7 +18,7 @@
             <div class="progressbar">
                 <div :class="'progress progress'+data.id"></div>
             </div>
-            <p class="progressNum">{{data.progress}}%</p>
+            <p class="progressNum">{{data.progress === null ? 0 : data.progress}}/{{data.condition}}</p>
             <p class="name">{{data.name}}</p>
         </div>
     </div>
@@ -47,7 +47,7 @@ export default {
             if(this.data.level == 0){
                 let count = 0
                 let timer = setInterval(()=>{
-                    if(count >= this.data.progress || count == 100){
+                    if(count >= this.data.progressBar || count == 100){
                         clearInterval(timer)
                     }
                     document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"

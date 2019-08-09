@@ -122,7 +122,7 @@ export default {
                 if(res.code != null && res.code === 0){
                     let data = res.data
                     for(let i = 0;i<data.length;i++){
-                        data[i].progress = Math.floor(data[i].progress/data[i].condition*10000)/100 <= 100 ? Math.floor(data[i].progress/data[i].condition*10000)/100:100
+                        data[i].progressBar = Math.floor(data[i].progress/data[i].condition*10000)/100 <= 100 ? Math.floor(data[i].progress/data[i].condition*10000)/100:100
                     }
                     this.medalData = data 
                     this.dataStatus = true
