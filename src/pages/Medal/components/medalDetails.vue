@@ -115,7 +115,7 @@ export default {
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     position: relative;
     top: 0.1rem
 }
