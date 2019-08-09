@@ -95,6 +95,7 @@ export default {
         this.vfUid()
     },
     mounted(){
+        document.getElementById("medalList").style.height = window.innerHeight-22+'px'
         this.titleStatus(this.medalData)
     },
     methods:{
@@ -268,7 +269,7 @@ export default {
     padding-left: 0.085rem;
     padding-right: 0.085rem;
     background-color: #fff;
-    height: 6.4rem;
+    /* height: 6.15rem; */
 }
 .awarded{
     margin-bottom: 0.22rem;
