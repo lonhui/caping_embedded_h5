@@ -6,7 +6,7 @@
             :paginationPadding="4"
             :paginationSize="6" 
             :mouse-drag="false"
-            :navigateTo="detailData"
+            :navigateTo="[detailData,false]"
             paginationActiveColor="#fff"
             paginationColor="#666">
             <slide v-for="item in medalData" :key="item.id">

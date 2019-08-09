@@ -75,7 +75,7 @@ export default {
             dataStatus:true,
             medalDetailShow:false,
             detailData:{
-                navigateTo:1,
+                navigateTo:0,
                 getCount:0,
                 conditiondetail:"",
                 instructions: "",
@@ -268,7 +268,7 @@ export default {
     padding-left: 0.085rem;
     padding-right: 0.085rem;
     background-color: #fff;
-    height: 30rem;
+    height: 6.4rem;
 }
 .awarded{
     margin-bottom: 0.22rem;
