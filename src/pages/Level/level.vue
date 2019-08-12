@@ -42,13 +42,15 @@
         </div>-->
         <!-- 如何获得排名？ -->
         <div class="lv_promotion">
-            <p>Misi Harians ?</p>
+            <p>Misi Harian ?</p>
             <ul>
                 <li v-for="(item,index) in goRank" :key="index">
-                    <div class="liD">
-                        <div class="title">{{item.title}}</div>
-                        <div class="desc">{{item.desc}}</div>
+                    <misiHarian :data = "item"/>
+                    <!-- <div class="liD">
+                        <div class="title">{{item.misi}}</div>
+                        <div class="desc">{{item.aturan}}</div>
                     </div>
+                    <p class="details">{{item.details}}</p> -->
                 </li>
             </ul>
         </div>
@@ -65,6 +67,8 @@ import lv6 from "@/assets/LV/profil_icon_lv14@2x.png"
 import lv7 from "@/assets/LV/profil_icon_lv16@2x.png"
 import lv8 from "@/assets/LV/profil_icon_lv17@2x.png"
 import lv9 from "@/assets/LV/profil_icon_lv18@2x.png"
+
+import misiHarian from "./components/misiHarian"
 
 export default {
     data(){
@@ -141,59 +145,75 @@ export default {
             ],
             goRank:[
                 {
-                    title:"1. Memberi Komentar",
-                    desc:"+ 5 Poin, 250 Max poin/day"
+                    misi:"1. Memberi Komentar",
+                    aturan:"+ 5 Poin",
+                    details:"Kamu berhak mendapatkan 5 poin setiap memberikan komentar pada artikel ataupun video, maksimal 50 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"2. Menyukai Artikel/Video",
-                    desc:"+ 2 Poin, 100 Max poin/day"
+                    misi:"2. Menyukai Artikel/Video",
+                    aturan:"+ 2 Poin",
+                    details:"Kamu berhak mendapatkan 2 poin setiap menyukai komentar pada artikel ataupun video, maksimal 50 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"3. Balasan Komentar",
-                    desc:"+ 5 Poin, 250 Max poin/day"
+                    misi:"3. Balasan Komentar",
+                    aturan:"+ 5 Poin",
+                    details:"Kamu berhak mendapatkan 5 poin jika komentarmu di balas oleh pengguna lain, maksimal 50 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya."
                 },
                 {
-                    title:"4. Komentar Yang Disukai",
-                    desc:"+ 2 Poin, 100 Max poin/day"
+                    misi:"4. Komentar Yang Disukai",
+                    aturan:"+ 2 Poin",
+                    details:"Kamu berhak mendapatkan 2 poin jika komentarmu di sukai oleh pengguna lain, maksimal 50 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya."
                 },
                 {
-                    title:"5. Membaca Artikel",
-                    desc:"+ 20 Poin, 800 Max poin/day"
+                    misi:"5. Membaca Artikel",
+                    aturan:"+ 20 Poin",
+                    details:"Kamu berhak mendapatkan 20 poin setiap membaca artikel, maksimal 40 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"6. Menonton Video",
-                    desc:"+ 20 Poin, 400 Max poin/day"
+                    misi:"6. Menonton Video",
+                    aturan:"+ 20 Poin",
+                    details:"Kamu berhak mendapatkan 20 poin setiap menonton video, maksimal 20 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"7. Absen Harian",
-                    desc:"+ 70 Poin, 10-70 Max poin/day"
+                    misi:"7. Absen Harian",
+                    aturan:"+ 70 Poin",
+                    details:"Kamu berhak mendapatkan poin setiap kali kamu melakukan absensi harian, maksimal 70 poin pada hari ke 7. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"8. Mengambil Bonus",
-                    desc:"+ 20 Poin, 160 Max poin/day"
+                    misi:"8. Mengambil Bonus",
+                    aturan:"+ 20 Poin",
+                    details:"Kamu berhak mendapatkan sejumlah poin secara acak setiap kali kamu mengambil bonus. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"9. Bagikan Konten",
-                    desc:"+ 5 Poin, 25 Max poin/day"
+                    misi:"9. Bagikan Konten",
+                    aturan:"+ 5 Poin",
+                    details:"Kamu berhak mendapatkan 5 poin setiap kali kamu membagikan konten ke sosial media kamu, maksimal 5 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"10. Bagikan Kode Undangan",
-                    desc:"+ 5 Poin, 100 Max poin/day"
+                    misi:"10. Bagikan Kode Undangan",
+                    aturan:"+ 5 Poin",
+                    details:"Kamu berhak mendapatkan 5 poin setiap membagikan kode undangan, maksimal 20 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"11. Membuka Push Notifikasi",
-                    desc:"+ 5 Poin, 200 Max poin/day"
+                    misi:"11. Membuka Push Notifikasi",
+                    aturan:"+ 5 Poin",
+                    details:"Kamu berhak mendapatkan 5 poin setiap membuka push notifikasi, maksimal 40 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"12. Register Pengguna Baru",
-                    desc:"+ 2000 Poin, - Max poin/day"
+                    misi:"12. Register Pengguna Baru",
+                    aturan:"+ 2000 Poin",
+                    details:"Kamu berhak mendapatkan 2000 poin bagi pengguna yang baru melakukan register. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 },
                 {
-                    title:"13. Teman Yang Diundang",
-                    desc:"+ 600 Poin, - Max poin/day"
+                    misi:"13. Teman Yang Diundang",
+                    aturan:"+ 600 Poin",
+                    details:"Kamu berhak mendapatkan 600 poin setiap pengguna baru yang melakukan register dan menggunakan kode undangan kamu, maksimal 5 kali/hari. Poin akan bertambah secara otomatis. Aktif terus di Caping dan kumpulkan poinnya. "
                 }
             ]
         }
+    },
+    components:{
+        misiHarian
     }
 }
 </script>
@@ -306,13 +326,6 @@ tr{
     /* margin-left: 0.15rem; */
     color: rgba(51, 51, 51, 0.7);
 }
-.lv_promotion li .liD{
-    line-height: 0.24rem;
-    display: flex;
-    flex-direction:row;
-    justify-content: space-between;
-    align-items: center;
-}
 .lv_promotion li{
     padding-top: 0.05rem;
     padding-bottom: 0.05rem;
@@ -326,8 +339,5 @@ tr{
 }
 .lv_promotion li div:nth-child(2){
     width: 50%;
-}
-.liD .desc{
-    text-align: right;
 }
 </style>

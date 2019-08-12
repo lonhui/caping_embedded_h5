@@ -39,7 +39,7 @@ const router = new Router({
       path:'/level',
       name:'level',
       meta:{
-        title:'Level Introduction',
+        title:'Tentang Level',
         scrollToTop: true,
       },
       component: () => import('@/pages/Level/level')
@@ -48,7 +48,7 @@ const router = new Router({
       path:'/medal',
       name:'medal',
       meta:{
-        title:'Me Dals',
+        title:'Tentang Medali',
         scrollToTop: true,
       },
       component: () => import('@/pages/Medal/medalList')
