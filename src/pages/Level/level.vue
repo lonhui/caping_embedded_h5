@@ -90,7 +90,7 @@ export default {
                 },
                 {
                     id:3,
-                    jabatan:"Lurach",
+                    jabatan:"Lurah",
                     icon:lv3,
                     level:["LV.07","LV.08","LV.09"],
                     integral:[18000,24000,48000]
