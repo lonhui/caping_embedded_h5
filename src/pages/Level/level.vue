@@ -42,7 +42,7 @@
         </div>-->
         <!-- 如何获得排名？ -->
         <div class="lv_promotion">
-            <p>Misi Harian ?</p>
+            <p>Misi Harian</p>
             <ul>
                 <li v-for="(item,index) in goRank" :key="index">
                     <misiHarian :data = "item"/>
