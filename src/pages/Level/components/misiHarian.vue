@@ -19,8 +19,8 @@ export default {
     data(){
         return{
             status:false,
-            topIcon:require('@/assets/top_icon.png'),
-            bottomIcom:require('@/assets/bottom_icon.png')
+            topIcon:require('@/assets/LV/ico_Arrow_Next6@2x.png'),
+            bottomIcom:require('@/assets/LV/ico_Arrow_Next5@2x.png')
         }
     }
 }
@@ -29,6 +29,13 @@ export default {
 <style scoped>
 .liD .desc{
     text-align: right;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    color: #666;
+}
+.liD .title{
+    color: #333;
 }
 .liD{
     line-height: 0.24rem;
@@ -36,17 +43,18 @@ export default {
     flex-direction:row;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.12rem;
 }
 .details{
     color: rgba(51, 51, 51, 0.5);
-    font-size: 0.12rem;
+    font-size: 0.10rem;
     font-weight: 500;
     padding: 0.05rem 0.1rem;
     line-height: 0.16rem;
 }
 img{
-     width: 0.12rem;
-     height: 0.08rem;
+     width: 0.18rem;
+     height: 0.18rem;
      margin-left: 0.1rem;
  }
 .slide-fade-enter-active {

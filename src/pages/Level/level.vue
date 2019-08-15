@@ -226,7 +226,7 @@ export default {
 table{
     width: 100%;
     border-collapse:collapse;
-    color:rgba(51, 51, 51, 0.7);
+    color:#333;
 }
 .lv_table{
     border-radius: 0.1rem;
@@ -237,6 +237,7 @@ table{
 .table{
     background-color: #fff;
     border-radius: 0.1rem;
+    font-size: 0.12rem;
 }
 th,td{
     width: 25%;
@@ -329,7 +330,7 @@ tr{
 .lv_promotion li{
     padding-top: 0.05rem;
     padding-bottom: 0.05rem;
-    border-bottom: rgba(153, 76, 76, 0.15) 0.005rem solid;
+    border-bottom: rgba(0, 0, 0, 0.15) 0.005rem solid;
 }
 .lv_promotion li .title{
     color: #333;
