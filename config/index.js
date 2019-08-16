@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/v2':{
-        target:"http://test.ai.caping.co.id",
+        target:"http://localhost:3440",
         changeOrigin:true
       }
     },

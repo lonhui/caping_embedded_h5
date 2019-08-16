@@ -11,7 +11,7 @@
 <script>
 import {getUserMedalInfo} from '@/api/index'
 import faq from '@/components/FAQ'
-import {FAQ} from '@/assets/js/FAQ'
+import {FAQ} from '@/assets/js/FAQ5.0.6'
 
 export default {
     data(){
