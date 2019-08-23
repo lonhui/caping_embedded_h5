@@ -160,7 +160,7 @@ export default {
                     mie = urlParams.c
                     setCookie("c",mie,1)
                 }else{
-                    console.log("未登录（mie）")
+                    // console.log("未登录（mie）")
                 }
             }
             if(isFalse(did)){
@@ -168,7 +168,7 @@ export default {
                     did = urlParams.d
                     setCookie("d",did,1)
                 }else{
-                    console.log("未登录（did）")
+                    // console.log("未登录（did）")
                 }
             }
             if(isFalse(uid)){
@@ -176,7 +176,7 @@ export default {
                     uid = urlParams.u
                     setCookie("u",uid,1)
                 }else{
-                    console.log("未登录（uid）")
+                    // console.log("未登录（uid）")
                 }
             }
             return uid;
