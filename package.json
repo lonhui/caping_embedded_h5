@@ -7,9 +7,11 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "cache": "cd ./dist && appcache-manifest './**/**/**/**/**.**' --network-star -o ./index.appcache && cd ../"
   },
   "dependencies": {
+    "appcache-manifest": "^2.1.0",
     "axios": "^0.19.0",
     "compression-webpack-plugin": "^1.1.11",
     "nprogress": "^0.2.0",
