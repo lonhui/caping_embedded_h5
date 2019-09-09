@@ -47,7 +47,7 @@ export default {
             if(this.data.level == 0){
                 let count = 0
                 let timer = setInterval(()=>{
-                    if(count >= this.data.progressBar || count == 100){
+                    if(count >= (this.data.progressBar ? this.data.progressBar : 0) || count == 100){
                         clearInterval(timer)
                     }
                     document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"

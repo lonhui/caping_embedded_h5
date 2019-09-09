@@ -48,8 +48,9 @@ import {getCookie,setCookie} from "@/utils/Cookie"
 //
 import {getUserMedalInfo} from "@/api/index"
 
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+//loading效果
+// import NProgress from 'nprogress'
+// import 'nprogress/nprogress.css'
 
 export default {
     data(){
@@ -117,7 +118,7 @@ export default {
         },
         //获取勋章信息
         getMeadelData(uid){
-            NProgress.start()
+            // NProgress.start()
             getUserMedalInfo({uid:uid}).then((res)=>{
                 if(res.code != null && res.code === 0){
                     let data = res.data
@@ -134,7 +135,7 @@ export default {
                 console.log(error)
                 this.dataStatus = false
             })
-            NProgress.done()
+            // NProgress.done()
         },
         titleStatus(medalData){
             let awarded_count = 0
@@ -208,7 +209,7 @@ export default {
                     progress: 0,
                     status: 1,
                 },{
-                    condition: 100,
+                    condition: 1000,
                     conditiondetail: "Mendapatkan 1000 like pada 1 komentar",
                     getCount: null,
                     id: 3,
@@ -220,7 +221,7 @@ export default {
                     progress: 0,
                     status: 1,
                 },{
-                    condition: 100,
+                    condition: 1000,
                     conditiondetail: "Membuka 1000 kali push notifikasi",
                     getCount: null,
                     id: 4,
@@ -232,7 +233,7 @@ export default {
                     progress: 0,
                     status: 1,
                 },{
-                    condition: 100,
+                    condition: 1000,
                     conditiondetail: "Berikan 1000 komentar terbaikmu",
                     getCount: null,
                     id: 5,
@@ -244,7 +245,7 @@ export default {
                     progress: 0,
                     status: 1,
                 },{
-                    condition: 100,
+                    condition: 60,
                     conditiondetail: "Lakukan absensi harian setiap hari selama 2 bulan.",
                     getCount: null,
                     id: 6,

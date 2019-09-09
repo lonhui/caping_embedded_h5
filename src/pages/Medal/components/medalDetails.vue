@@ -86,13 +86,16 @@ export default {
     flex-direction: column;
 }
 .close{
-    align-self: flex-end;
-    padding: 0.4rem;
-    position: absolute;
+    width: 0.62rem;
+    height: 0.62rem;
+    position:absolute;
+    right: 0.3rem;
+    top:0.3rem
 }
 .close img{
     width: 0.22rem;
     height: 0.22rem;
+    margin: 0.2rem
 }
 .medalImg{
     width: 3.40rem;
