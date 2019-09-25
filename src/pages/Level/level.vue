@@ -320,7 +320,7 @@ tr{
     font-size: 0.12rem;
     font-weight: 600;
     padding-bottom: 0.1rem;
-    color: #333;
+    color: #0aa344;
 }
 .lv_promotion ul{
     /* list-style-type: decimal; */
