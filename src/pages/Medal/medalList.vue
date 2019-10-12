@@ -2,7 +2,7 @@
     <div id="medalList" v-wechat-title="$route.meta.title">
         <div class="back" v-if="dataStatus === true">
             <div class="awarded" v-show="awardedTitleStatus" >
-                <p class="title">Medal Awarded</p>
+                <p class="title">Koleksi Medali</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
                         <medal class="medalCom" 
@@ -14,7 +14,7 @@
                 </ul>
             </div>
             <div class="unawarded" v-show="unawardedTitleStatus">
-                <p class="title">Unawarded Medal</p>
+                <p class="title">Daftar Medali</p>
                 <ul class="box">
                     <li class="medal" v-for="item in medalData" :key="item.id">
                         <medal class="medalCom" 
