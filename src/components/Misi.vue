@@ -19,8 +19,8 @@ export default {
     data(){
         return{
             contentShow:false,
-            topIcon:require('@/assets/top_icon.png'),
-            bottomIcom:require('@/assets/bottom_icon.png')
+            topIcon:require('@/assets/top_icon_new.png'),
+            bottomIcom:require('@/assets/bottom_icon_new.png')
         }
     }
 }
@@ -29,19 +29,20 @@ export default {
 <style scoped>
  #Mise{
      padding: 0.10rem;
-     padding-bottom: 0
+     padding-bottom: 0;
+      background-color: #f2f2f2;
  }
  .Mise_child{
      background-color: #fff;
-     border-radius: 0.05rem;
+     border-radius: 0.1rem;
 
-     -moz-box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
+     /* -moz-box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
      -webkit-box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
-     box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
+     box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5);  */
  }
  img{
-     width: 0.12rem;
-     height: 0.08rem;
+     width: 0.2rem;
+     height: 0.2rem;
  }
  .title{
      padding: 0.10rem;
@@ -49,25 +50,27 @@ export default {
      flex-direction: row;
      align-items: center;
      justify-content: space-between;
+     font-family: 'Roboto-Regular';
  }
  .title p{
      width: 65%;
-     font-size: 0.10rem;
+     font-size: 0.13rem;
      line-height: 0.30rem;
      color: #000;
      font-weight: 600;
      margin-right: 0.05rem;
  }
  .title span{
-     color: #fa0000
+     color: #fa0000;
  }
  .content{
-     padding: 0.10rem;
+     padding: 0.12rem 0 0.12rem 0;
+     margin: 0 0.12rem 0 0.12rem;
      border-top: #dddddd 0.01rem solid;
      font-size: 0.12rem;
      color: rgba(0, 0, 0, 0.5);
      line-height: 0.20rem;
-     font-family: 'PT_Serif_Regular';
+     font-family: 'Roboto-Regular';
  }
 .slide-fade-enter-active {
   transition: all .3s ease;

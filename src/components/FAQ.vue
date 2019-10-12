@@ -19,8 +19,8 @@ export default {
     data(){
         return{
             contentShow:false,
-            topIcon:require('@/assets/top_icon.png'),
-            bottomIcom:require('@/assets/bottom_icon.png')
+            topIcon:require('@/assets/top_icon_new.png'),
+            bottomIcom:require('@/assets/bottom_icon_new.png')
         }
     }
 }
@@ -28,25 +28,22 @@ export default {
 
 <style scoped>
 @font-face{
-    font-family: 'PT_Serif_Regular';
-    src : url('../../static/fonts/PT_Serif_Regular.ttf');
+    font-family: 'Roboto-Regular';
+    src : url('../../static/fonts/Roboto-Regular.ttf');
 }
 
  #faq{
-     padding: 0.1rem;
-     padding-bottom: 0
+     padding: 0.1rem 0.16rem 0.1rem 0.16rem;
+     padding-bottom: 0;
+     background-color:#f2f2f2
  }
  .faq_child{
      background-color: #fff;
-     border-radius: 0.05rem;
-
-     -moz-box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
-     -webkit-box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
-     box-shadow:0.02rem 0.02rem 0.05rem rgba(0,0,0,0.5); 
+     border-radius: 0.1rem;
  }
  img{
-     width: 0.12rem;
-     height: 0.08rem;
+     width: 0.2rem;
+     height: 0.2rem;
  }
  .title{
      padding: 0.10rem;
@@ -56,20 +53,22 @@ export default {
      justify-content: space-between;
  }
  .title p{
-     font-size: 0.10rem;
-     line-height: 0.20rem;
-     color: #000;
+     font-size: 0.13rem;
+     line-height: 0.22rem;
+     color: #333;
      font-weight: 600;
      margin-right: 0.05rem;
+     font-family: 'Roboto-Regular';
  }
  
  .content{
-     padding: 0.10rem;
-     border-top: #dddddd 0.01rem solid;
+     padding: 0.12rem 0 0.12rem 0;
+     margin: 0 0.12rem 0 0.12rem;
+     border-top: #dddddd6c 0.01rem solid;
      font-size: 0.12rem;
-     color: rgba(0, 0, 0, 0.5);
-     line-height: 0.20rem;
-     font-family: 'PT_Serif_Regular';
+     color: rgba(102, 102, 102, 0.829);
+     line-height: 0.18rem;
+     font-family: 'Roboto-Regular';
  }
 .slide-fade-enter-active {
   transition: all .3s ease;
