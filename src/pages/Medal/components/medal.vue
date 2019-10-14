@@ -16,7 +16,7 @@
         <div v-else class="medal_notObtained">
             <img class="medalIcon" :src="medalimg" alt="">
             <div class="progressbar">
-                <div :class="'progress progress'+data.id"></div>
+                <div :class="'progress progress'+data.operationType"></div>
             </div>
             <p class="progressNum">{{data.progress === null ? 0 : data.progress}}/{{data.condition}}</p>
             <p class="name">{{data.name}}</p>
@@ -46,11 +46,13 @@ export default {
         initProgress(){
             if(this.data.level == 0){
                 let count = 0
+                let progress = this.data.progress ? this.data.progress : 0
+                let progressWidth =  this.data.progress/this.data.condition*100
                 let timer = setInterval(()=>{
-                    if(count >= (this.data.progressBar ? this.data.progressBar : 0) || count == 100){
+                    if(count >= progressWidth || count == 100){
                         clearInterval(timer)
                     }
-                    document.getElementsByClassName("progress"+this.data.id)[0].style.width = count+"%"
+                    document.getElementsByClassName("progress"+this.data.operationType)[0].style.width = count+"%"
                     count++
                 },20)
             }
